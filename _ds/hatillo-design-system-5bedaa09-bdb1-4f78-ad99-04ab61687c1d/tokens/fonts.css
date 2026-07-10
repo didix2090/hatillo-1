@@ -1,0 +1,105 @@
+/* Hatillo — brand webfonts, self-hosted.
+   Body: Mirinda Sans (token family 'Mirinda Sans' — the uploaded files are 'Miranda Sans',
+   kept under this name for continuity). Headings: Sora. All .ttf files live in /fonts. */
+
+/* ---- Headings: Sora ---- */
+@font-face {
+  font-family: 'Sora';
+  src: url('../fonts/Sora-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('../fonts/Sora-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('../fonts/Sora-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('../fonts/Sora-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('../fonts/Sora-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Sora';
+  src: url('../fonts/Sora-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---- Body: Mirinda Sans ---- */
+@font-face {
+  font-family: 'Mirinda Sans';
+  src: url('../fonts/MirandaSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mirinda Sans';
+  src: url('../fonts/MirandaSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mirinda Sans';
+  src: url('../fonts/MirandaSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mirinda Sans';
+  src: url('../fonts/MirandaSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mirinda Sans';
+  src: url('../fonts/MirandaSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mirinda Sans';
+  src: url('../fonts/MirandaSans-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mirinda Sans';
+  src: url('../fonts/MirandaSans-Bold.ttf') format('truetype');
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mirinda Sans';
+  src: url('../fonts/MirandaSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700 800;
+  font-style: italic;
+  font-display: swap;
+}

@@ -1,0 +1,154 @@
+<!-- @dsCard group="Asistente Municipal" viewport="1280x800" name="Asistente Municipal — app" subtitle="Full flow: onboarding → login → OTP → home → chat (pago/trámite/reporte) → voz → historial → perfil" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Hatillo · Asistente Municipal</title>
+<link rel="stylesheet" href="../_ds/hatillo-design-system-5bedaa09-bdb1-4f78-ad99-04ab61687c1d/styles.css">
+<style>
+  html, body, #root { height: 100%; }
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  body { margin: 0; font-family: var(--font); background: var(--page); color: var(--ink); overflow-x: hidden; overscroll-behavior: none; }
+  #root { display: flex; flex-direction: column; }
+  a { color: var(--blue); }
+  a:hover { color: var(--color-hover); }
+  @keyframes hatiShimmer { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+  @keyframes kycIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* Entrada a la app — ease-out suave (fade + leve subida/scale). */
+  @keyframes appEnter { from { opacity: 0; transform: translateY(14px) scale(.985); } to { opacity: 1; transform: none; } }
+  .app-enter { animation: appEnter .55s cubic-bezier(.22,.61,.36,1) both; }
+  .app-enter > * { animation: appRise .6s cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes appRise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .app-enter, .app-enter > * { animation: none !important; } }
+
+  /* Entradas suaves reutilizables + feedback de presión (ease-out). */
+  @keyframes hatiRise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .hati-rise { animation: hatiRise .5s cubic-bezier(.22,.61,.36,1) both; }
+  .hati-stagger > * { animation: hatiRise .52s cubic-bezier(.22,.61,.36,1) both; }
+  .hati-stagger > *:nth-child(1) { animation-delay: .02s; }
+  .hati-stagger > *:nth-child(2) { animation-delay: .07s; }
+  .hati-stagger > *:nth-child(3) { animation-delay: .12s; }
+  .hati-stagger > *:nth-child(4) { animation-delay: .17s; }
+  .hati-stagger > *:nth-child(5) { animation-delay: .22s; }
+  .hati-stagger > *:nth-child(6) { animation-delay: .27s; }
+  .hati-press { transition: transform .08s ease, background .15s ease, border-color .15s ease; }
+  .hati-press:active { transform: scale(.985); }
+  @keyframes badgePop { 0% { transform: scale(.6); opacity: 0; } 60% { transform: scale(1.08); } 100% { transform: scale(1); opacity: 1; } }
+  .badge-pop { animation: badgePop .5s cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes okBar { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+
+  /* BlurText — entrada por palabra: blur 10→0 + fade + desliz vertical (top). */
+  @keyframes blurWordIn { from { opacity: 0; filter: blur(10px); transform: translateY(-24px); } to { opacity: 1; filter: blur(0); transform: translateY(0); } }
+  .blur-word { display: inline-block; opacity: 0; animation: blurWordIn .5s cubic-bezier(.22,.61,.36,1) both; will-change: transform, filter, opacity; }
+  @media (prefers-reduced-motion: reduce) { .blur-word { animation: none !important; opacity: 1 !important; filter: none !important; transform: none !important; } }
+
+  /* Selector de tono: fade del ejemplo + barras del wave de Hati. */
+  @keyframes toneFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .tone-fade { animation: toneFade .32s ease both; }
+  @keyframes toneBar { 0%, 100% { transform: scaleY(.35); } 50% { transform: scaleY(1); } }
+  .tone-bar { transform-origin: center; animation: toneBar 1s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .tone-fade { animation: none !important; } .tone-bar { animation: none !important; transform: scaleY(.7) !important; } }
+  .tone-wheel::-webkit-scrollbar { display: none; }
+  .tone-wheel { scrollbar-width: none; }
+
+  /* Welcome intro — isotipo con entrada + anillo mint que se expande, luego el
+     nombre sube y aparece; se mantiene y hace fade-out. ~2.6s en total. */
+  @keyframes wcIso { 0% { transform: scale(.4); opacity: 0; } 55% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+  @keyframes wcRing { 0% { transform: scale(.6); opacity: .55; } 100% { transform: scale(2.1); opacity: 0; } }
+  @keyframes wcRise { 0% { transform: translateY(16px); opacity: 0; filter: blur(6px); } 100% { transform: translateY(0); opacity: 1; filter: blur(0); } }
+  @keyframes wcFadeOut { to { opacity: 0; visibility: hidden; } }
+  .wc-iso { animation: wcIso .6s cubic-bezier(.34,1.35,.5,1) both; }
+  .wc-ring { animation: wcRing 1.1s cubic-bezier(.22,.61,.36,1) .35s both; }
+  .wc-name { animation: wcRise .6s cubic-bezier(.22,.61,.36,1) .5s both; }
+  .wc-stage { animation: wcFadeOut .4s ease 2.15s both; }
+  @media (prefers-reduced-motion: reduce) {
+    .wc-iso, .wc-ring, .wc-name { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+    .wc-ring { display: none; }
+    .wc-stage { animation: wcFadeOut .3s ease 1.4s both; }
+  }
+  @media (prefers-reduced-motion: reduce) { .hati-rise, .hati-stagger > *, .badge-pop { animation: none !important; } .hati-press:active { transform: none; } }
+
+  /* Chat input pill — animated gradient border on focus */
+  .chat-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1.5px solid #D5DCE2;
+    border-radius: 999px;
+    padding: 6px 6px 6px 8px;
+    transition: border-color .25s ease, box-shadow .25s ease;
+  }
+  .chat-input::before {
+    content: "";
+    position: absolute;
+    inset: -1.5px;
+    border-radius: 999px;
+    padding: 1.5px;
+    background: linear-gradient(90deg, #0051FF, #04D69C, #6E9BFF, #04D69C, #0051FF);
+    background-size: 300% 100%;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+  }
+  .chat-input:focus-within {
+    border-color: transparent;
+    box-shadow: 0 0 0 4px rgba(0, 81, 255, .10);
+  }
+  .chat-input:focus-within::before {
+    opacity: 1;
+    animation: hatiFlow 3s linear infinite;
+  }
+  .chat-input:focus-within .mic-btn {
+    background: #0051FF;
+    color: #fff;
+  }
+  .mic-btn { background: var(--fog); color: var(--navy); }
+  @keyframes hatiFlow { to { background-position: -300% 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .chat-input:focus-within::before { animation: none; }
+  }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" rx="22" fill="#0051FF"/>
+    <path d="M30 54 L50 36 L70 54 L70 70 L58 70 L58 58 L42 58 L42 70 L30 70 Z" fill="#fff"/>
+    <rect x="46" y="44" width="8" height="16" rx="2" fill="#0051FF"/>
+  </svg>
+</template>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../_ds/hatillo-design-system-5bedaa09-bdb1-4f78-ad99-04ab61687c1d/_ds_bundle.js"></script>
+<script type="text/babel" src="data.jsx"></script>
+<script type="text/babel" src="useEmailDomainSuggestions.jsx"></script>
+<script type="text/babel" src="AppShell.jsx"></script>
+<script type="text/babel" src="MessageScroller.jsx"></script>
+<script type="text/babel" src="Auth.jsx"></script>
+<script type="text/babel" src="ChatThread.jsx"></script>
+<script type="text/babel" src="Shell.jsx"></script>
+<script type="text/babel" src="Kyc.jsx"></script>
+<script type="text/babel" src="EmptyState.jsx"></script>
+<script type="text/babel" src="Nav.jsx"></script>
+<script type="text/babel" src="Metodos.jsx"></script>
+<script type="text/babel" src="EditProfile.jsx"></script>
+<script type="text/babel" src="CompletaDatos.jsx"></script>
+<script type="text/babel" src="icons.jsx"></script>
+<script type="text/babel" src="voice.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="App.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('root')).render(<window.AppRoot />);
+</script>
+</body>
+</html>

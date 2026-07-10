@@ -1,0 +1,28 @@
+/* Hatillo — Spacing, radii and elevation tokens
+   Ritmo base 4. Esquinas generosas heredadas del branding. */
+
+:root {
+  /* Spacing scale (base 4) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Screen margin on mobile */
+  --screen-margin: 24px;
+
+  /* Radii */
+  --r-sm: 12px;    /* inputs */
+  --r-md: 16px;    /* tiles */
+  --r-lg: 20px;    /* tarjetas */
+  --r-xl: 28px;    /* héroes */
+  --r-pill: 999px; /* botones · chips */
+
+  /* Elevation */
+  --shadow: 0 12px 30px -12px rgba(14, 27, 43, .18);
+  --shadow-lg: 0 24px 60px -20px rgba(14, 27, 43, .28);
+}

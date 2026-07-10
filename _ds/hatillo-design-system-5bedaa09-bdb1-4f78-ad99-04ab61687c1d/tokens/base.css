@@ -1,0 +1,13 @@
+/* Hatillo — base reset.
+   border-box everywhere so padding never adds to declared widths (matches the
+   v1 spec's reset). Kept intentionally minimal — no opinionated margin resets. */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Headings use the display face (Sora); body copy inherits Mirinda from the page.
+   Applies to semantic heading tags across every surface that links styles.css. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}

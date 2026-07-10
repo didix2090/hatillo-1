@@ -1,0 +1,368 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/cards/**",
+              "components/chat/**",
+              "components/core/**",
+              "components/feedback/**",
+              "components/forms/**",
+              "components/navigation/**",
+              "ui_kits/asistente/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Sora|Mirinda Sans))/i]",
+        "message": "Font not provided by the design system. Available: Sora, Mirinda Sans."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FaqItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:q|a|key|ref|className|style|children)$/]",
+        "message": "<FaqItem> doesn't accept that prop. Declared props: q, a."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Alert'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|children|key|ref|className|style|children)$/]",
+        "message": "<Alert> doesn't accept that prop. Declared props: variant, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:status|dot|children|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: status, dot, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NavTab'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|label|icon|key|ref|className|style|children)$/]",
+        "message": "<NavTab> doesn't accept that prop. Declared props: id, label, icon."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|disabled|loading|fullWidth|leadingIcon|trailingIcon|children|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, disabled, loading, fullWidth, leadingIcon, trailingIcon, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ChatBubble'] > JSXAttribute > JSXIdentifier[name!=/^(?:from|children|key|ref|className|style|children)$/]",
+        "message": "<ChatBubble> doesn't accept that prop. Declared props: from, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Chip'] > JSXAttribute > JSXIdentifier[name!=/^(?:selected|children|key|ref|className|style|children)$/]",
+        "message": "<Chip> doesn't accept that prop. Declared props: selected, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Country'] > JSXAttribute > JSXIdentifier[name!=/^(?:iso|name|dial|flag|key|ref|className|style|children)$/]",
+        "message": "<Country> doesn't accept that prop. Declared props: iso, name, dial, flag."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='DomainCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|tint|title|meta|badge|rowLabel|rowValue|key|ref|className|style|children)$/]",
+        "message": "<DomainCard> doesn't accept that prop. Declared props: icon, tint, title, meta, badge, rowLabel, rowValue."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='EmptyState'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|title|description|action|key|ref|className|style|children)$/]",
+        "message": "<EmptyState> doesn't accept that prop. Declared props: icon, title, description, action."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FeedbackButtons'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|onVote|style|key|ref|className|style|children)$/]",
+        "message": "<FeedbackButtons> doesn't accept that prop. Declared props: value, onVote, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Field'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|placeholder|state|errorMessage|leading|onChange|style|key|ref|className|style|children)$/]",
+        "message": "<Field> doesn't accept that prop. Declared props: value, placeholder, state, errorMessage, leading, onChange, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|size|strokeWidth|color|className|style|key|ref|className|style|children)$/]",
+        "message": "<Icon> doesn't accept that prop. Declared props: name, size, strokeWidth, color, className, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='IconButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|tone|size|title|key|ref|className|style|children)$/]",
+        "message": "<IconButton> doesn't accept that prop. Declared props: icon, tone, size, title."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='OtpInput'] > JSXAttribute > JSXIdentifier[name!=/^(?:length|value|onChange|onComplete|autoFocus|style|key|ref|className|style|children)$/]",
+        "message": "<OtpInput> doesn't accept that prop. Declared props: length, value, onChange, onComplete, autoFocus, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PaymentCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|amount|status|meta|actions|badge|key|ref|className|style|children)$/]",
+        "message": "<PaymentCard> doesn't accept that prop. Declared props: label, amount, status, meta, actions, badge."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PhoneField'] > JSXAttribute > JSXIdentifier[name!=/^(?:country|value|onChange|onOpenPicker|placeholder|style|key|ref|className|style|children)$/]",
+        "message": "<PhoneField> doesn't accept that prop. Declared props: country, value, onChange, onOpenPicker, placeholder, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='QuickReplies'] > JSXAttribute > JSXIdentifier[name!=/^(?:options|onPick|align|style|key|ref|className|style|children)$/]",
+        "message": "<QuickReplies> doesn't accept that prop. Declared props: options, onPick, align, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='QuickReplies'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|right)$/]",
+        "message": "<QuickReplies> align must be one of 'left' | 'right'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ReceiptLine'] > JSXAttribute > JSXIdentifier[name!=/^(?:k|v|key|ref|className|style|children)$/]",
+        "message": "<ReceiptLine> doesn't accept that prop. Declared props: k, v."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ServiceTile'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|label|tone|key|ref|className|style|children)$/]",
+        "message": "<ServiceTile> doesn't accept that prop. Declared props: icon, label, tone."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Toast'] > JSXAttribute > JSXIdentifier[name!=/^(?:tone|icon|children|key|ref|className|style|children)$/]",
+        "message": "<Toast> doesn't accept that prop. Declared props: tone, icon, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ToneOption'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|label|key|ref|className|style|children)$/]",
+        "message": "<ToneOption> doesn't accept that prop. Declared props: id, label."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='VoiceState'] > JSXAttribute > JSXIdentifier[name!=/^(?:transcript|note|key|ref|className|style|children)$/]",
+        "message": "<VoiceState> doesn't accept that prop. Declared props: transcript, note."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "FaqItem": {
+        "replaces": []
+      },
+      "Alert": {
+        "replaces": []
+      },
+      "Badge": {
+        "replaces": []
+      },
+      "NavTab": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "ChatBubble": {
+        "replaces": []
+      },
+      "Chip": {
+        "replaces": []
+      },
+      "Country": {
+        "replaces": []
+      },
+      "DomainCard": {
+        "replaces": []
+      },
+      "EmptyState": {
+        "replaces": []
+      },
+      "FeedbackButtons": {
+        "replaces": []
+      },
+      "Field": {
+        "replaces": []
+      },
+      "Icon": {
+        "replaces": []
+      },
+      "IconButton": {
+        "replaces": []
+      },
+      "OtpInput": {
+        "replaces": []
+      },
+      "PaymentCard": {
+        "replaces": []
+      },
+      "PhoneField": {
+        "replaces": []
+      },
+      "QuickReplies": {
+        "replaces": []
+      },
+      "ReceiptLine": {
+        "replaces": []
+      },
+      "ServiceTile": {
+        "replaces": []
+      },
+      "Toast": {
+        "replaces": []
+      },
+      "ToneOption": {
+        "replaces": []
+      },
+      "TypingIndicator": {
+        "replaces": []
+      },
+      "VoiceState": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--blue",
+      "--color-active",
+      "--color-disabled-bg",
+      "--color-disabled-text",
+      "--color-hover",
+      "--color-primary",
+      "--concrete",
+      "--error",
+      "--error-border",
+      "--error-surface",
+      "--fog",
+      "--font",
+      "--font-heading",
+      "--font-mono",
+      "--fw-bold",
+      "--fw-extrabold",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--ink",
+      "--ink-soft",
+      "--line",
+      "--mint",
+      "--navy",
+      "--night",
+      "--page",
+      "--primary",
+      "--primary-border",
+      "--primary-surface",
+      "--r-lg",
+      "--r-md",
+      "--r-pill",
+      "--r-sm",
+      "--r-xl",
+      "--screen-margin",
+      "--shadow",
+      "--shadow-lg",
+      "--size-body",
+      "--size-display-l",
+      "--size-display-xl",
+      "--size-h1",
+      "--size-h2",
+      "--size-label",
+      "--space-1",
+      "--space-2",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-7",
+      "--space-8",
+      "--success",
+      "--success-border",
+      "--success-surface",
+      "--surface",
+      "--text-body",
+      "--text-display-l",
+      "--text-display-xl",
+      "--text-h1",
+      "--text-h2",
+      "--text-label",
+      "--warning",
+      "--warning-border",
+      "--warning-surface",
+      "--white"
+    ],
+    "tokenKinds": {
+      "--blue": "color",
+      "--mint": "color",
+      "--navy": "color",
+      "--night": "color",
+      "--concrete": "color",
+      "--fog": "color",
+      "--white": "color",
+      "--ink": "color",
+      "--ink-soft": "color",
+      "--line": "color",
+      "--surface": "color",
+      "--page": "color",
+      "--primary": "color",
+      "--primary-surface": "color",
+      "--success": "color",
+      "--success-surface": "color",
+      "--warning": "color",
+      "--warning-surface": "color",
+      "--error": "color",
+      "--error-surface": "color",
+      "--primary-border": "color",
+      "--success-border": "color",
+      "--warning-border": "color",
+      "--error-border": "color",
+      "--color-primary": "color",
+      "--color-hover": "color",
+      "--color-active": "color",
+      "--color-disabled-bg": "color",
+      "--color-disabled-text": "font",
+      "--font": "font",
+      "--font-heading": "font",
+      "--font-mono": "font",
+      "--fw-regular": "other",
+      "--fw-medium": "other",
+      "--fw-semibold": "other",
+      "--fw-bold": "other",
+      "--fw-extrabold": "other",
+      "--text-display-xl": "font",
+      "--text-display-l": "font",
+      "--text-h1": "font",
+      "--text-h2": "font",
+      "--text-body": "font",
+      "--text-label": "font",
+      "--size-display-xl": "spacing",
+      "--size-display-l": "spacing",
+      "--size-h1": "spacing",
+      "--size-h2": "spacing",
+      "--size-body": "spacing",
+      "--size-label": "spacing",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-7": "spacing",
+      "--space-8": "spacing",
+      "--screen-margin": "spacing",
+      "--r-sm": "spacing",
+      "--r-md": "spacing",
+      "--r-lg": "spacing",
+      "--r-xl": "spacing",
+      "--r-pill": "spacing",
+      "--shadow": "shadow",
+      "--shadow-lg": "shadow"
+    },
+    "fontFamilies": [
+      "Mirinda Sans",
+      "Sora"
+    ]
+  }
+}

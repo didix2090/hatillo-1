@@ -1,0 +1,41 @@
+/* Hatillo — Color tokens
+   Brand palette, role aliases, semantic roles (WCAG AA), interactive states. */
+
+:root {
+  /* ---- Brand palette ---- */
+  --blue: #0051FF;      /* Acción · marca */
+  --mint: #04D69C;      /* Acento vivo · éxito */
+  --navy: #12295F;      /* Superficie oscura */
+  --night: #0E1B2B;     /* Texto · fondo profundo */
+  --concrete: #B8C2BB;  /* Neutro medio */
+  --fog: #E6EAED;       /* Fondo claro */
+  --white: #FFFFFF;
+
+  /* ---- Role aliases ---- */
+  --ink: #0E1B2B;        /* texto principal */
+  --ink-soft: #41506A;   /* texto secundario */
+  --line: #D5DCE2;       /* bordes / divisores */
+  --surface: #FFFFFF;    /* superficie de tarjeta */
+  --page: #EEF1F4;       /* fondo de página */
+
+  /* ---- Semantic roles — cada rol = 1 acento + 1 superficie.
+     El acento pasa blanco encima (botón) y funciona como texto/ícono
+     sobre su superficie. Todos verificados ≥ WCAG AA. ---- */
+  --primary: #0051FF;   --primary-surface: #E9F0FF;   /* white-on 5.8 · on-surface 5.07 */
+  --success: #0B7A5B;   --success-surface: #E3F7EF;   /* white-on 5.32 · on-surface 4.76 */
+  --warning: #9A5B00;   --warning-surface: #FFF4E1;   /* white-on 5.43 · on-surface 4.98 */
+  --error:   #C42A2E;   --error-surface:   #FBE7E7;   /* white-on 5.65 · on-surface 4.76 */
+
+  /* Border tints for semantic surfaces */
+  --primary-border: #CBD9FF;
+  --success-border: #BFE6D6;
+  --warning-border: #EDDCB6;
+  --error-border:   #F2C9CA;
+
+  /* ---- Interactive states (primary CTA) ---- */
+  --color-primary: #0051FF;
+  --color-hover: #0043D6;
+  --color-active: #0037B0;
+  --color-disabled-bg: #EEF1F4;
+  --color-disabled-text: #7C8794;
+}
